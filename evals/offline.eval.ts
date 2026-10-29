@@ -12,6 +12,7 @@ import { evalCases, knownTokens, textChecks } from "../lib/cases.js";
 import {
   atRiskAccounts, counts, healthyCustomers, openPipelineTotal, pipelineByStage, staleOpportunities,
 } from "../lib/expected.js";
+import { readFileSync } from "node:fs";
 import { buildAccountTree, resolveDate, seed } from "../lib/fixtures.js";
 
 const allRecords = [...seed.accounts, ...seed.contacts, ...seed.opportunities, ...seed.cases, ...seed.tasks];
@@ -70,6 +71,22 @@ export default defineEval({
           "Negotiation/Review": 420_000,
         }));
         t.metric("total", openPipelineTotal);
+      },
+    },
+    {
+      id: "seed-prompt-matches-fixtures",
+      description: "The default seed prompt (fixtures/seed-prompt.md) names every record in fixtures/seed/",
+      async test(t) {
+        const prompt = readFileSync(new URL("../fixtures/seed-prompt.md", import.meta.url), "utf8");
+        const names = [
+          ...seed.accounts.map((a) => a.Name),
+          ...seed.contacts.map((c) => `${c.FirstName} | ${c.LastName}`),
+          ...seed.opportunities.map((o) => o.Name),
+          ...seed.cases.map((c) => c.Subject),
+          ...seed.tasks.map((x) => x.Subject),
+        ];
+        t.check(names.filter((n) => !prompt.includes(n)), equals([]));
+        t.metric("records named", names.length);
       },
     },
     {

@@ -16,6 +16,7 @@
     "auth": "agent-sdk mcp oauth salesforce --dir .",
     "smoke": "tsx scripts/smoke-mcp.ts",
     "seed": "tsx scripts/seed.ts",
+    "seed:fixtures": "tsx scripts/seed-fixtures.ts",
     "eval": "agent-sdk eval --dir . --tag offline",
     "eval:live": "agent-sdk eval --dir . --tag live",
     "eval:reads": "agent-sdk eval --dir . --tag reads",

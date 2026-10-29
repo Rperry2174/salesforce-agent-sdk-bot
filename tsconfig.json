@@ -7,7 +7,16 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["bot/**/*", "evals/**/*", "config/**/*", "lib/**/*", "scripts/**/*"]
+  "include": [
+    "bot/**/*",
+    "evals/**/*",
+    "config/**/*",
+    "lib/**/*",
+    "scripts/**/*",
+    "seeder/**/*"
+  ]
 }

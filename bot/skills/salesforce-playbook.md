@@ -12,13 +12,16 @@ description: Use when you are unsure how to read or write a Salesforce record th
 SOQL hygiene: explicit fields, a `WHERE` or `ORDER BY`, `LIMIT 50`. Use relationship
 fields (`Account.Name`) instead of a second query when you can.
 
-Useful filters:
+Scope every query to the demo book of business: `Site = 'sf-bot-demo'` on Account,
+`Account.Site = 'sf-bot-demo'` on Contact, Opportunity, Case and Task.
+
+Useful filters (add them after the scope):
 
 | Question | Filter |
 | --- | --- |
 | Open pipeline | `IsClosed = false` |
 | Stale pipeline | `IsClosed = false AND (CloseDate < TODAY OR NextStep = null)` |
-| Pipeline by stage | `SELECT StageName, SUM(Amount) total, COUNT(Id) n FROM Opportunity WHERE IsClosed = false GROUP BY StageName` |
+| Pipeline by stage | `SELECT StageName, SUM(Amount) total, COUNT(Id) n FROM Opportunity WHERE Account.Site = 'sf-bot-demo' AND IsClosed = false GROUP BY StageName` |
 | Open high-priority cases | `Priority = 'High' AND Status != 'Closed'` |
 | Closing soon | `CloseDate = NEXT_N_DAYS:14` |
 

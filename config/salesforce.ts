@@ -60,3 +60,9 @@ export const TOOLS: ToolMap = TOOL_MAPS[SERVER] ?? TOOL_MAPS["platform/headless-
 
 /** Written into the Description of every seeded record, so demo data is easy to find and remove. */
 export const SEED_MARKER = "[sf-bot-demo]";
+
+/**
+ * Account Site of every seeded account. Demo orgs often ship with other sample
+ * data, so the bot scopes its queries to this book of business (see bot/instructions.md).
+ */
+export const DEMO_SITE = "sf-bot-demo";

@@ -11,7 +11,7 @@ import opportunities from "../fixtures/seed/opportunities.json" with { type: "js
 import cases from "../fixtures/seed/cases.json" with { type: "json" };
 import tasks from "../fixtures/seed/tasks.json" with { type: "json" };
 
-export interface SeedAccount { ref: string; Name: string; Industry: string; Type: string; Website: string; Phone: string; Description: string }
+export interface SeedAccount { ref: string; Name: string; Industry: string; Type: string; Site: string; Website: string; Phone: string; Description: string }
 export interface SeedContact { ref: string; account: string; FirstName: string; LastName: string; Title: string; Email: string; Description: string }
 export interface SeedOpportunity { ref: string; account: string; Name: string; Amount: number; StageName: string; CloseDate: string; NextStep?: string; ForecastCategoryName?: string; Description: string }
 export interface SeedCase { ref: string; account: string; Subject: string; Priority: string; Status: string; Origin: string; Description: string }

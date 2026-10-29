@@ -19,13 +19,13 @@ Run these with `dispatch_readonly` (one call each):
 
 ```sql
 SELECT Account.Name, Subject, Priority, Status FROM Case
-WHERE Priority = 'High' AND Status != 'Closed' LIMIT 50
+WHERE Account.Site = 'sf-bot-demo' AND Priority = 'High' AND Status != 'Closed' LIMIT 50
 
 SELECT Name, Account.Name, StageName, Amount, CloseDate, Account.LastActivityDate FROM Opportunity
-WHERE IsClosed = false AND Name LIKE '%Renewal%' LIMIT 50
+WHERE Account.Site = 'sf-bot-demo' AND IsClosed = false AND Name LIKE '%Renewal%' LIMIT 50
 
 SELECT Name, Title, Account.Name FROM Contact
-WHERE Title LIKE '%left%' LIMIT 50
+WHERE Account.Site = 'sf-bot-demo' AND Title LIKE '%left%' LIMIT 50
 ```
 
 ## Answer

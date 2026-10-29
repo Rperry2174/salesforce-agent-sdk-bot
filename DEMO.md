@@ -8,7 +8,7 @@ A 10-minute walkthrough: the bot answers real questions from a Salesforce org, a
 npm install
 npm run auth        # skip if you authenticated recently
 npm run smoke       # expect "ok" on every line and "demo data: seeded"
-npm run seed        # only if smoke says the demo data isn't there
+npm run seed        # only if smoke says the demo data isn't there (a few minutes: an agent seeds from fixtures/seed-prompt.md)
 ```
 
 Keep two terminals open in the repo.
@@ -31,6 +31,7 @@ Point out in the trace:
 - `discover` finding the SOQL query endpoint
 - each `dispatch_readonly` call, with the SOQL in `queryParams.q`
 - no `dispatch` call, because it's a read question
+- every query scoped to the demo book of business (`Account.Site = 'sf-bot-demo'`)
 - the answer: Halcyon Freight (two open high-priority cases) and Brightwater Health (stale renewal, departed contact)
 
 ## 3. Run the evals into the playground
@@ -47,18 +48,21 @@ Or run them from the **Evals** tab. Ten cases take a few minutes at the default 
 |---|---|
 | `org-tour` | Several read-only count queries, then counts in the answer |
 | `at-risk-accounts` | Skill load, Case and Opportunity reads, ranked answer. Metrics `expected` vs `got` show the tool path |
-| `pipeline-by-stage` | One or two SOQL reads, a markdown table whose totals match the seed data exactly |
+| `pipeline-by-stage` | One or two SOQL reads on Opportunity. The table and totals are soft checks |
 | `stale-pipeline` | Reads only. The `notCalledTool(dispatch)` assertion is the point |
 | `account-brief` | Turn 1 has several reads. Turn 2 has no tool calls: it answers from context |
 | `log-meeting-recap` | Read to find the opportunity Id, then `dispatch POST /services/data/v67.0/sobjects/Task` with that `WhatId` |
 | `partner-email-capture` | The Task lands on Halcyon's renewal opportunity, not on the partner's account |
-| `bulk-close-guardrail` | No `dispatch`. The judge confirms it asked before changing anything |
+| `bulk-close-guardrail` | No `dispatch`: that's the gate. The judge score (soft) shows it asked before changing anything |
 
 For any case, open it under **Runs** for the full trace, **Raw** for the event stream and **Logs** for the server log.
 
+Every gate is a tool-call assertion: which tool, which sObject, GET versus POST, the `WhatId`, how many calls. Answer text and judge scores are soft, so they show up but never fail a case. Checking what Salesforce returned is Salesforce's side.
+
 ## 5. Show it's just code
 
-- Open `fixtures/eval-cases.json` and point at one row: prompt, expected path, required mentions, rubric.
+- Open `fixtures/eval-cases.json` and point at one row: prompt, expected path, the sObjects it must touch (gates), and the soft mentions and rubric.
+- Open `fixtures/seed-prompt.md`: the demo data is a prompt. `npm run seed -- --prompt your-story.md --dry-run` previews your own.
 - Open `config/salesforce.ts`: switching to `platform/sobject-all` is one env var, and the evals follow the tool map.
 - Run `npm run eval` to show the offline suite that CI runs with no credentials.
 
@@ -68,7 +72,7 @@ For any case, open it under **Runs** for the full trace, **Raw** for the event s
 npm run seed -- --reset
 ```
 
-This deletes the demo accounts (which removes their contacts, opportunities, cases and tasks, including Tasks the write evals created) and seeds again.
+This deletes the demo accounts (Site `sf-bot-demo`; Salesforce removes their contacts, opportunities, cases and tasks, including Tasks the write evals created) and seeds again. For an exact, model-free load use `npm run seed:fixtures -- --reset`.
 
 ## If something goes wrong
 
@@ -78,4 +82,6 @@ This deletes the demo accounts (which removes their contacts, opportunities, cas
 | `Reconnect salesforce` | The token expired or was revoked. `npm run auth` |
 | Login works but every call is rejected | Turn on JWT-based access tokens in the External Client App |
 | `smoke` finds no SOQL endpoint | Set `SALESFORCE_MCP_SERVER=platform/sobject-all` (activate it in Setup first) |
+| `[plan_required] Cloud Agent is not available` | The Cursor account behind `CURSOR_API_KEY` has no Cloud Agents plan. Remove the key and use `npx agent-sdk login` with a team account |
+| Model turns exit with code 139 on a Mac | Node 22.13 crashes loading a native module. `nvm install 24 && nvm use` |
 | Port 3000 is taken | `agent-sdk dev` prints the port it picked. Use `npx agent-sdk eval --dir . --tag live --url http://127.0.0.1:<port>` |

@@ -4,6 +4,7 @@
     "Name": "Halcyon Freight Co.",
     "Industry": "Transportation",
     "Type": "Customer - Direct",
+    "Site": "sf-bot-demo",
     "Website": "https://www.halcyonfreight.example.com",
     "Phone": "555-0110",
     "Description": "[sf-bot-demo] Freight and logistics customer. Partner of record: Orbital Systems Integrators."
@@ -13,6 +14,7 @@
     "Name": "Brightwater Health Partners",
     "Industry": "Healthcare",
     "Type": "Customer - Direct",
+    "Site": "sf-bot-demo",
     "Website": "https://www.brightwaterhealth.example.com",
     "Phone": "555-0111",
     "Description": "[sf-bot-demo] Regional healthcare network. Executive champion left in the last quarter."
@@ -22,6 +24,7 @@
     "Name": "Juniper Ridge Outfitters",
     "Industry": "Retail",
     "Type": "Customer - Direct",
+    "Site": "sf-bot-demo",
     "Website": "https://www.juniperridge.example.com",
     "Phone": "555-0112",
     "Description": "[sf-bot-demo] Outdoor retail chain. Expanding seat count."
@@ -31,6 +34,7 @@
     "Name": "Tessellate Robotics",
     "Industry": "Manufacturing",
     "Type": "Prospect",
+    "Site": "sf-bot-demo",
     "Website": "https://www.tessellate.example.com",
     "Phone": "555-0113",
     "Description": "[sf-bot-demo] Industrial robotics prospect in an active pilot."
@@ -40,6 +44,7 @@
     "Name": "Marlowe & Finch Insurance",
     "Industry": "Insurance",
     "Type": "Customer - Direct",
+    "Site": "sf-bot-demo",
     "Website": "https://www.marlowefinch.example.com",
     "Phone": "555-0114",
     "Description": "[sf-bot-demo] Specialty insurer."
@@ -49,6 +54,7 @@
     "Name": "Quillfeather Analytics",
     "Industry": "Technology",
     "Type": "Prospect",
+    "Site": "sf-bot-demo",
     "Website": "https://www.quillfeather.example.com",
     "Phone": "555-0115",
     "Description": "[sf-bot-demo] Analytics startup evaluating an add-on."
@@ -58,6 +64,7 @@
     "Name": "Orbital Systems Integrators",
     "Industry": "Technology",
     "Type": "Channel Partner / Reseller",
+    "Site": "sf-bot-demo",
     "Website": "https://www.orbital-si.example.com",
     "Phone": "555-0116",
     "Description": "[sf-bot-demo] Reseller partner. Resells to Halcyon Freight Co."
@@ -67,6 +74,7 @@
     "Name": "Cobalt Mesa Energy",
     "Industry": "Energy",
     "Type": "Customer - Direct",
+    "Site": "sf-bot-demo",
     "Website": "https://www.cobaltmesa.example.com",
     "Phone": "555-0117",
     "Description": "[sf-bot-demo] Energy customer. Healthy, expanding in phases."

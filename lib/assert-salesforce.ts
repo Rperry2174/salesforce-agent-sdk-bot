@@ -10,6 +10,16 @@ const facts = (t: EvalTestContext): Facts => deriveRunFacts(t.events);
 
 const text = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v ?? ""));
 
+/** A Headless 360 dispatch input ({ url, method, ... }), whether it arrives parsed or as JSON text. */
+const dispatchInput = (v: unknown): { url?: string; method?: string } => {
+  if (typeof v !== "string") return (v ?? {}) as { url?: string; method?: string };
+  try {
+    return JSON.parse(v);
+  } catch {
+    return {};
+  }
+};
+
 /** Every Salesforce MCP tool call in the run, in order. */
 export function salesforceCalls(t: EvalTestContext): EvalToolCallFact[] {
   const known = new Set([...TOOLS.find, ...TOOLS.read, ...TOOLS.write]);
@@ -49,7 +59,18 @@ export function recordTrace(t: EvalTestContext, expected: string) {
 export function assertReadPath(t: EvalTestContext) {
   t.calledTool(TOOLS.read[0]!, { status: "completed" });
   if (TOOLS.find[0] === "discover") t.toolOrder(["discover", TOOLS.read[0]!]).soft();
+  assertReadsAreGets(t);
   assertNoWrites(t);
+}
+
+/** Headless 360: every dispatch_readonly call is a GET on a relative /services/data/ URL. */
+export function assertReadsAreGets(t: EvalTestContext) {
+  if (TOOLS.read[0] !== "dispatch_readonly") return;
+  const bad = readCalls(t).filter((c) => {
+    const input = dispatchInput(c.input);
+    return String(input.method ?? "GET").toUpperCase() !== "GET" || !String(input.url ?? "").startsWith("/services/data/");
+  });
+  claim(t, "every read is a GET on /services/data/", bad.length === 0);
 }
 
 /** No create, update or delete of any kind. */
@@ -65,10 +86,15 @@ export function assertWritePath(t: EvalTestContext, sobject: string) {
   const write = TOOLS.write[0]!;
   t.calledTool(TOOLS.read[0]!, { status: "completed" });
   t.toolOrder([TOOLS.read[0]!, write]);
-  t.calledTool(write, {
-    status: "completed",
-    input: (input: unknown) => new RegExp(`\\b${sobject}\\b`).test(text(input)) && !/"method"\s*:\s*"(DELETE|PATCH|PUT)"/i.test(text(input)),
-  });
+  const isCreate = (input: unknown) =>
+    write === "dispatch"
+      ? new RegExp(`/sobjects/${sobject}\\b`).test(String(dispatchInput(input).url ?? "")) &&
+        String(dispatchInput(input).method ?? "").toUpperCase() === "POST"
+      : new RegExp(`\\b${sobject}\\b`).test(text(input));
+  t.calledTool(write, { status: "completed", input: isCreate });
+  // Every write is a create: no update, delete or bulk call slipped in.
+  claim(t, `every ${write} call creates a ${sobject}`, writeCalls(t).every((c) => isCreate(c.input)));
+  assertReadsAreGets(t);
 }
 
 /** Salesforce record Ids for one sObject key prefix (006 = Opportunity) found in read outputs that mention `near`. */
@@ -88,6 +114,9 @@ export function idsSeenNear(t: EvalTestContext, near: string, prefix: string): s
 
 /** The input of the first write call, as text (for body checks like WhatId). */
 export const firstWriteInput = (t: EvalTestContext) => text(writeCalls(t)[0]?.input);
+
+/** The inputs of every write call, as text. */
+export const writeInputs = (t: EvalTestContext) => writeCalls(t).map((c) => text(c.input));
 
 /** A labeled boolean check, so the playground shows what was claimed ("mentions Halcyon"), not just "true". */
 // eventsSatisfy is the assertion that carries its label into the result name.
