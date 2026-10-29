@@ -1,0 +1,35 @@
+{
+  "name": "salesforce-bot",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "A Salesforce bot on Cursor's Agent SDK. It talks to Salesforce's Headless 360 MCP and ships evals that assert which MCP tools it calls.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "agent-sdk dev . --port 3000 --mode single",
+    "check": "tsc --noEmit",
+    "validate": "agent-sdk validate --dir .",
+    "info": "agent-sdk info --dir .",
+    "auth": "agent-sdk mcp oauth salesforce --dir .",
+    "smoke": "tsx scripts/smoke-mcp.ts",
+    "seed": "tsx scripts/seed.ts",
+    "eval": "agent-sdk eval --dir . --tag offline",
+    "eval:live": "agent-sdk eval --dir . --tag live",
+    "eval:reads": "agent-sdk eval --dir . --tag reads",
+    "eval:smoke": "agent-sdk eval --dir . --tag smoke",
+    "eval:ui": "agent-sdk eval --dir . --tag live --url http://127.0.0.1:3000",
+    "eval:ci": "mkdir -p reports && agent-sdk eval --dir . --json --no-stream --junit reports/evals.xml --artifacts reports/evals > reports/evals.json"
+  },
+  "dependencies": {
+    "@grok/agent-sdk": "0.5.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4",
+    "typescript": "^5.9.0"
+  }
+}

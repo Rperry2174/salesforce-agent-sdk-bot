@@ -1,0 +1,6 @@
+node_modules/
+.agent-serve/
+.env
+.env.local
+*.log
+reports/
