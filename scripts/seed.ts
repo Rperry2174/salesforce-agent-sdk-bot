@@ -23,7 +23,8 @@ if (args.has("--dry-run")) {
 requireH360("Seeding");
 console.log(`Seeding through ${MCP_URL}`);
 const base = `/services/data/${API_VERSION}`;
-const existing = (soql(`SELECT Id, Name FROM Account WHERE Name IN (${names})`).records ?? []) as Array<{ Id: string; Name: string }>;
+// Account Name is not unique, so a dirty org can hold many matches. 200 is also the most ids the composite delete below takes.
+const existing = (soql(`SELECT Id, Name FROM Account WHERE Name IN (${names}) LIMIT 200`).records ?? []) as Array<{ Id: string; Name: string }>;
 
 if (existing.length && !args.has("--reset")) {
   console.log(`The demo accounts already exist (${existing.length} of ${seed.accounts.length}). Run \`npm run seed -- --reset\` to recreate them.`);

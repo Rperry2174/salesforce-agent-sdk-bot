@@ -76,9 +76,12 @@ function liveCase(row: EvalCaseRow) {
       if (row.whatIdOf) writeTargetsRecord(t, row.whatIdOf);
       if (row.maxToolCalls) t.maxToolCalls(row.maxToolCalls);
 
-      const reply = t.turns.map((turn) => turn.message).join("\n");
+      // mustMention grades the final answer: in a multi-turn case the research dump
+      // doesn't count, only the write-up asked for last. Forbidden text counts anywhere.
+      const reply = t.reply ?? "";
+      const everything = t.turns.map((turn) => turn.message).join("\n");
       for (const c of textChecks(row.mustMention)) claim(t, `mentions ${c.label}`, c.pattern.test(reply));
-      for (const c of textChecks(row.mustNotMention)) claim(t, `does not mention ${c.label}`, !c.pattern.test(reply)).soft();
+      for (const c of textChecks(row.mustNotMention)) claim(t, `does not mention ${c.label}`, !c.pattern.test(everything)).soft();
       if (row.rubric) t.judge.closedQA(row.rubric).atLeast(0.7);
 
       EXTRA_CHECKS[row.id]?.(t);

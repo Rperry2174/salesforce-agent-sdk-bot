@@ -34,9 +34,26 @@ function parseResult(result: unknown): unknown {
   const text = typeof result === "string" ? result : content?.find((c) => c.type === "text")?.text;
   if (text === undefined) return result;
   try {
-    return JSON.parse(text);
+    return unwrapDispatch(JSON.parse(text));
   } catch {
     return text;
+  }
+}
+
+/**
+ * Headless 360's `dispatch` and `dispatch_readonly` describe the REST call they
+ * made (`{ status_code, url, body }`) instead of returning the Salesforce
+ * payload at the top level. Callers want the payload.
+ */
+function unwrapDispatch(value: unknown): unknown {
+  if (value === null || typeof value !== "object" || Array.isArray(value)) return value;
+  const wrapper = value as Record<string, unknown>;
+  if (!("body" in wrapper) || !("status_code" in wrapper || "statusCode" in wrapper)) return value;
+  if (typeof wrapper.body !== "string") return wrapper.body;
+  try {
+    return JSON.parse(wrapper.body);
+  } catch {
+    return wrapper.body;
   }
 }
 
