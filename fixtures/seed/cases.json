@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "case-1",
+    "account": "halcyon",
+    "Subject": "Shipment tracking API returning 502s",
+    "Priority": "High",
+    "Status": "Escalated",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-2",
+    "account": "halcyon",
+    "Subject": "Invoice totals mismatched with quote",
+    "Priority": "High",
+    "Status": "New",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-3",
+    "account": "juniper",
+    "Subject": "SSO login loop after password reset",
+    "Priority": "High",
+    "Status": "Closed",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-4",
+    "account": "juniper",
+    "Subject": "Request to export loyalty data",
+    "Priority": "Low",
+    "Status": "Closed",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-5",
+    "account": "tessellate",
+    "Subject": "Sandbox provisioning delayed",
+    "Priority": "Medium",
+    "Status": "Working",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-6",
+    "account": "brightwater",
+    "Subject": "Scheduled report not sending",
+    "Priority": "Low",
+    "Status": "New",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-7",
+    "account": "marlowe",
+    "Subject": "Claims dashboard slow to load",
+    "Priority": "Medium",
+    "Status": "Working",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "case-8",
+    "account": "cobalt",
+    "Subject": "Question about Phase 3 data residency",
+    "Priority": "Medium",
+    "Status": "Closed",
+    "Origin": "Web",
+    "Description": "[sf-bot-demo]"
+  }
+]

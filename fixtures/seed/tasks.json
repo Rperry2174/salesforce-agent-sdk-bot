@@ -1,0 +1,102 @@
+[
+  {
+    "ref": "task-1",
+    "account": "halcyon",
+    "Subject": "Call with Priya about renewal timeline",
+    "ActivityDate": "today-3d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-2",
+    "account": "halcyon",
+    "Subject": "Emailed Marcus the 502 incident summary",
+    "ActivityDate": "today-5d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Email",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-3",
+    "account": "juniper",
+    "Subject": "Expansion pricing walkthrough",
+    "ActivityDate": "today-2d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-4",
+    "account": "juniper",
+    "Subject": "Sent seat calculator",
+    "ActivityDate": "today-6d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Email",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-5",
+    "account": "tessellate",
+    "Subject": "Pilot kickoff call",
+    "ActivityDate": "today-1d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-6",
+    "account": "marlowe",
+    "Subject": "Proposal sent to Owen",
+    "ActivityDate": "today-30d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Email",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-7",
+    "account": "quillfeather",
+    "Subject": "Intro call with Noah",
+    "ActivityDate": "today-12d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-8",
+    "account": "orbital",
+    "Subject": "Partner pipeline sync with Leo",
+    "ActivityDate": "today-4d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-9",
+    "account": "cobalt",
+    "Subject": "Phase 3 scoping call",
+    "ActivityDate": "today-5d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "task-10",
+    "account": "cobalt",
+    "Subject": "Shared data residency FAQ",
+    "ActivityDate": "today-8d",
+    "Status": "Completed",
+    "Priority": "Normal",
+    "TaskSubtype": "Email",
+    "Description": "[sf-bot-demo]"
+  }
+]
