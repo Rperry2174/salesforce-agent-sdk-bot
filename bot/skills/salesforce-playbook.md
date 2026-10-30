@@ -9,7 +9,8 @@ description: Use when you are unsure how to read or write a Salesforce record th
 1. `discover({ "query": "run a SOQL query" })` once per conversation.
 2. `dispatch_readonly({ "url": "/services/data/v67.0/query", "method": "GET", "queryParams": { "q": "<SOQL>" } })`.
 
-SOQL hygiene: explicit fields, a `WHERE` or `ORDER BY`, `LIMIT 50`. Use relationship
+SOQL hygiene: explicit fields, a `WHERE` or `ORDER BY`, `LIMIT 50`. Aggregate queries
+(`COUNT(Id)`, `SUM(Amount)` without `GROUP BY`) reject `LIMIT`, so leave it off those. Use relationship
 fields (`Account.Name`) instead of a second query when you can.
 
 Scope every query to the demo book of business: `Site = 'sf-bot-demo'` on Account,
@@ -31,6 +32,16 @@ Useful filters (add them after the scope):
 2. `discover({ "query": "create a task" })`, then `describe` the operation it returns.
 3. `dispatch({ "url": "/services/data/v67.0/sobjects/Task", "method": "POST", "body": { ... } })`
 
-Body for a logged call: `Subject` ("Call: ..."), `WhatId`, `ActivityDate` (YYYY-MM-DD),
-`Status: "Completed"`, `TaskSubtype: "Call"`, `Description`. A follow-up is a second Task
-with `Status: "Not Started"` and the due date in `ActivityDate`.
+Body for a logged call: `Subject: "Call"`, `WhatId`, `ActivityDate` (YYYY-MM-DD),
+`Status: "Completed"`, `TaskSubtype: "Call"`, `Priority: "Normal"`, `OwnerId`, and the
+details in `Description`. A logged email is the same with `Subject: "Email"` and
+`TaskSubtype: "Email"`. A follow-up is a second Task with `Status: "Not Started"`, the due
+date in `ActivityDate`, and a `Subject` such as `"Send Quote"`, `"Send Letter"` or `"Other"`.
+
+Org rules that reject a Task with a 400 if you miss them:
+
+- `Subject` is a restricted picklist. Use one of its values (`Call`, `Email`, `Send Quote`,
+  `Send Letter`, `Other`), never free text. Put the summary in `Description`. If unsure, read
+  the values: `SELECT Value FROM PicklistValueInfo WHERE EntityParticle.EntityDefinition.QualifiedApiName = 'Task' AND EntityParticle.QualifiedApiName = 'Subject' AND IsActive = true LIMIT 50`.
+- `OwnerId` and `Priority` are required. Get your own user Id once with
+  `dispatch_readonly({ "url": "/services/data/v67.0/chatter/users/me", "method": "GET" })` (its `id`).

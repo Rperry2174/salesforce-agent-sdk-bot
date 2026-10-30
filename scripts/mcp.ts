@@ -111,3 +111,28 @@ export function demoCounts(): Record<"accounts" | "contacts" | "opportunities" |
     tasks: n(`SELECT COUNT() FROM Task WHERE Account.Site = '${DEMO_SITE}'`),
   };
 }
+
+/**
+ * Delete Tasks a previous eval run logged on one demo opportunity, so each write eval
+ * starts from the seeded state (otherwise the bot rightly sees the activity is already
+ * logged and skips the write). Seeded Tasks start their Description with "[sf-bot-demo]"
+ * and are kept. Returns how many Tasks were deleted.
+ */
+export function deleteEvalTasks(opportunityName: string): number {
+  if (!isH360) return 0; // sobject-all has no DELETE; leave the org as it is
+  const name = opportunityName.replace(/'/g, "\\'");
+  const r = soql(
+    `SELECT Id, Description FROM Task WHERE Account.Site = '${DEMO_SITE}' AND What.Name = '${name}' LIMIT 200`,
+  );
+  const ids = (r.records ?? [])
+    .filter((t) => !String(t.Description ?? "").startsWith(`[${DEMO_SITE}]`))
+    .map((t) => String(t.Id));
+  if (ids.length) {
+    callTool(TOOLS.write[0]!, {
+      url: `/services/data/${API_VERSION}/composite/sobjects`,
+      method: "DELETE",
+      queryParams: { ids: ids.join(","), allOrNone: "false" },
+    });
+  }
+  return ids.length;
+}

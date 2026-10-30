@@ -21,6 +21,7 @@ import {
 } from "../lib/assert-salesforce.js";
 import { evalCases, textChecks, type EvalCaseRow } from "../lib/cases.js";
 import { salesforceSkipReason } from "../lib/live.js";
+import { deleteEvalTasks } from "../scripts/mcp.js";
 
 const EXPECTED_PATH: Record<EvalCaseRow["path"], string> = {
   read: `${TOOLS.find[0]} → ${TOOLS.read[0]} (no ${TOOLS.write[0]})`,
@@ -64,6 +65,9 @@ function liveCase(row: EvalCaseRow) {
     async test(t: EvalTestContext) {
       const skip = salesforceSkipReason();
       if (skip) t.skip(skip);
+
+      // Write cases start from the seeded state: drop Tasks earlier runs logged on the target.
+      if (row.path === "write" && row.whatIdOf) t.metric("eval tasks cleared", deleteEvalTasks(row.whatIdOf));
 
       for (const message of row.turns ?? [row.prompt!]) await t.send(message);
 
