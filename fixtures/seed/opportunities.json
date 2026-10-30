@@ -1,0 +1,120 @@
+[
+  {
+    "ref": "halcyon-renewal",
+    "account": "halcyon",
+    "Name": "Halcyon Freight - FY27 Renewal",
+    "Amount": 240000,
+    "StageName": "Negotiation/Review",
+    "CloseDate": "today+45d",
+    "NextStep": "Send 3-year pricing option",
+    "Description": "[sf-bot-demo] Close date has moved twice this year. Partner: Orbital Systems Integrators."
+  },
+  {
+    "ref": "halcyon-tracking",
+    "account": "halcyon",
+    "Name": "Halcyon Freight - Tracking API Add-on",
+    "Amount": 35000,
+    "StageName": "Needs Analysis",
+    "CloseDate": "today+75d",
+    "NextStep": "Scope the add-on after the 502s are fixed",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "brightwater-renewal",
+    "account": "brightwater",
+    "Name": "Brightwater Health - Platform Renewal",
+    "Amount": 180000,
+    "StageName": "Negotiation/Review",
+    "CloseDate": "today+30d",
+    "NextStep": "Find a new executive sponsor",
+    "ForecastCategoryName": "Commit",
+    "Description": "[sf-bot-demo] Forecast: Commit. No logged activity since the champion left."
+  },
+  {
+    "ref": "juniper-expansion",
+    "account": "juniper",
+    "Name": "Juniper Ridge - Expansion",
+    "Amount": 95000,
+    "StageName": "Proposal/Price Quote",
+    "CloseDate": "today+20d",
+    "NextStep": "Send pricing for additional seats",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "juniper-loyalty",
+    "account": "juniper",
+    "Name": "Juniper Ridge - Loyalty Integration",
+    "Amount": 25000,
+    "StageName": "Qualification",
+    "CloseDate": "today+60d",
+    "NextStep": "Book discovery call",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "tessellate-pilot",
+    "account": "tessellate",
+    "Name": "Tessellate Robotics - New Logo Pilot",
+    "Amount": 60000,
+    "StageName": "Qualification",
+    "CloseDate": "today+10d",
+    "NextStep": "Confirm pilot success criteria",
+    "Description": "[sf-bot-demo] Closing this month."
+  },
+  {
+    "ref": "marlowe-claims",
+    "account": "marlowe",
+    "Name": "Marlowe & Finch - Claims Automation",
+    "Amount": 120000,
+    "StageName": "Proposal/Price Quote",
+    "CloseDate": "today-21d",
+    "NextStep": "Follow up on proposal",
+    "Description": "[sf-bot-demo] Close date passed without an update."
+  },
+  {
+    "ref": "quillfeather-addon",
+    "account": "quillfeather",
+    "Name": "Quillfeather - Analytics Add-on",
+    "Amount": 40000,
+    "StageName": "Needs Analysis",
+    "CloseDate": "today-9d",
+    "Description": "[sf-bot-demo] No next step recorded."
+  },
+  {
+    "ref": "quillfeather-trial",
+    "account": "quillfeather",
+    "Name": "Quillfeather - Platform Trial",
+    "Amount": 30000,
+    "StageName": "Prospecting",
+    "CloseDate": "today+40d",
+    "NextStep": "Send trial welcome kit",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "cobalt-phase2",
+    "account": "cobalt",
+    "Name": "Cobalt Mesa - Phase 2",
+    "Amount": 150000,
+    "StageName": "Closed Won",
+    "CloseDate": "today-70d",
+    "Description": "[sf-bot-demo] Closed last quarter."
+  },
+  {
+    "ref": "cobalt-phase3",
+    "account": "cobalt",
+    "Name": "Cobalt Mesa - Phase 3",
+    "Amount": 110000,
+    "StageName": "Value Proposition",
+    "CloseDate": "today+50d",
+    "NextStep": "Share data residency answer",
+    "Description": "[sf-bot-demo]"
+  },
+  {
+    "ref": "orbital-enablement",
+    "account": "orbital",
+    "Name": "Orbital Systems - Partner Enablement",
+    "Amount": 15000,
+    "StageName": "Closed Lost",
+    "CloseDate": "today-100d",
+    "Description": "[sf-bot-demo] Partner chose to self-train."
+  }
+]

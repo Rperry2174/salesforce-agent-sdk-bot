@@ -1,0 +1,146 @@
+[
+  {
+    "ref": "halcyon-priya",
+    "account": "halcyon",
+    "FirstName": "Priya",
+    "LastName": "Natarajan",
+    "Title": "VP Operations",
+    "Email": "priya.natarajan@halcyonfreight.example.com",
+    "Description": "[sf-bot-demo] Executive sponsor for the FY27 renewal."
+  },
+  {
+    "ref": "halcyon-marcus",
+    "account": "halcyon",
+    "FirstName": "Marcus",
+    "LastName": "Albright",
+    "Title": "IT Director",
+    "Email": "marcus.albright@halcyonfreight.example.com",
+    "Description": "[sf-bot-demo] Owns the tracking API integration."
+  },
+  {
+    "ref": "brightwater-dana",
+    "account": "brightwater",
+    "FirstName": "Dana",
+    "LastName": "Okafor",
+    "Title": "Former CIO (left the company)",
+    "Email": "dana.okafor@brightwaterhealth.example.com",
+    "Description": "[sf-bot-demo] Was our champion. Left Brightwater last quarter; no replacement sponsor yet."
+  },
+  {
+    "ref": "brightwater-elena",
+    "account": "brightwater",
+    "FirstName": "Elena",
+    "LastName": "Voss",
+    "Title": "Procurement Manager",
+    "Email": "elena.voss@brightwaterhealth.example.com",
+    "Description": "[sf-bot-demo] Handles the renewal paperwork."
+  },
+  {
+    "ref": "juniper-sam",
+    "account": "juniper",
+    "FirstName": "Sam",
+    "LastName": "Whitaker",
+    "Title": "Head of Store Operations",
+    "Email": "sam.whitaker@juniperridge.example.com",
+    "Description": "[sf-bot-demo] Ops lead driving the seat expansion."
+  },
+  {
+    "ref": "juniper-rosa",
+    "account": "juniper",
+    "FirstName": "Rosa",
+    "LastName": "Delgado",
+    "Title": "CFO",
+    "Email": "rosa.delgado@juniperridge.example.com",
+    "Description": "[sf-bot-demo] Approves the expansion budget."
+  },
+  {
+    "ref": "tessellate-kenji",
+    "account": "tessellate",
+    "FirstName": "Kenji",
+    "LastName": "Mori",
+    "Title": "CTO",
+    "Email": "kenji.mori@tessellate.example.com",
+    "Description": "[sf-bot-demo] Technical owner of the pilot."
+  },
+  {
+    "ref": "tessellate-aisha",
+    "account": "tessellate",
+    "FirstName": "Aisha",
+    "LastName": "Bello",
+    "Title": "Head of Procurement",
+    "Email": "aisha.bello@tessellate.example.com",
+    "Description": "[sf-bot-demo] Runs vendor selection."
+  },
+  {
+    "ref": "marlowe-owen",
+    "account": "marlowe",
+    "FirstName": "Owen",
+    "LastName": "Hartley",
+    "Title": "Director of Claims",
+    "Email": "owen.hartley@marlowefinch.example.com",
+    "Description": "[sf-bot-demo] Sponsor for claims automation."
+  },
+  {
+    "ref": "marlowe-grace",
+    "account": "marlowe",
+    "FirstName": "Grace",
+    "LastName": "Lindqvist",
+    "Title": "IT Program Manager",
+    "Email": "grace.lindqvist@marlowefinch.example.com",
+    "Description": "[sf-bot-demo] Day-to-day contact."
+  },
+  {
+    "ref": "quillfeather-noah",
+    "account": "quillfeather",
+    "FirstName": "Noah",
+    "LastName": "Fairbanks",
+    "Title": "Founder and CEO",
+    "Email": "noah.fairbanks@quillfeather.example.com",
+    "Description": "[sf-bot-demo] Decision maker."
+  },
+  {
+    "ref": "quillfeather-mia",
+    "account": "quillfeather",
+    "FirstName": "Mia",
+    "LastName": "Castellanos",
+    "Title": "Data Lead",
+    "Email": "mia.castellanos@quillfeather.example.com",
+    "Description": "[sf-bot-demo] Evaluating the add-on."
+  },
+  {
+    "ref": "orbital-leo",
+    "account": "orbital",
+    "FirstName": "Leo",
+    "LastName": "Brandt",
+    "Title": "Partner Manager",
+    "Email": "leo.brandt@orbital-si.example.com",
+    "Description": "[sf-bot-demo] Our partner manager at Orbital."
+  },
+  {
+    "ref": "orbital-ines",
+    "account": "orbital",
+    "FirstName": "Ines",
+    "LastName": "Carvalho",
+    "Title": "Solutions Architect",
+    "Email": "ines.carvalho@orbital-si.example.com",
+    "Description": "[sf-bot-demo] Partner technical lead."
+  },
+  {
+    "ref": "cobalt-hannah",
+    "account": "cobalt",
+    "FirstName": "Hannah",
+    "LastName": "Reyes",
+    "Title": "VP Digital",
+    "Email": "hannah.reyes@cobaltmesa.example.com",
+    "Description": "[sf-bot-demo] Sponsor for Phase 2 and Phase 3."
+  },
+  {
+    "ref": "cobalt-theo",
+    "account": "cobalt",
+    "FirstName": "Theo",
+    "LastName": "Nakamura",
+    "Title": "Platform Engineer",
+    "Email": "theo.nakamura@cobaltmesa.example.com",
+    "Description": "[sf-bot-demo] Technical contact."
+  }
+]
